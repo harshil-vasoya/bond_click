@@ -81,7 +81,12 @@ export default function ScrollAnimation({
   once = true,
 }: ScrollAnimationProps) {
   const ref = useRef(null)
-  const isInView = useInView(ref, { amount: threshold, once })
+  const isInView = useInView(ref, {
+    amount: threshold,
+    once,
+    // Add margin to start animation slightly before element comes into view
+    margin: "0px 0px -100px 0px",
+  })
 
   return (
     <motion.div
@@ -89,8 +94,16 @@ export default function ScrollAnimation({
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={variant}
-      transition={{ delay }}
+      transition={{
+        delay,
+        // Add more natural easing
+        ease: [0.25, 0.1, 0.25, 1],
+        // Reduce duration for better performance
+        duration: 0.5,
+      }}
       className={className}
+      // Add will-change hint for better performance
+      style={{ willChange: "opacity, transform" }}
     >
       {children}
     </motion.div>

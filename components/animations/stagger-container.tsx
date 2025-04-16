@@ -20,17 +20,22 @@ export default function StaggerContainer({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.25 }}
+      viewport={{ once: true, amount: 0.1 }}
       variants={{
         hidden: {},
         visible: {
           transition: {
             delayChildren,
             staggerChildren,
+            // Add stagger end to prevent too many animations at once
+            staggerDirection: 1,
+            when: "beforeChildren",
           },
         },
       }}
       className={className}
+      // Add will-change hint for better performance
+      style={{ willChange: "contents" }}
     >
       {children}
     </motion.div>

@@ -2,14 +2,8 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { Check, Home, Users, Package, Award, MapPin } from "lucide-react"
-import ScrollAnimation, {
-  fadeInDown,
-  fadeInUp,
-  fadeInLeft,
-  fadeInRight,
-  zoomIn,
-} from "@/components/animations/scroll-animation"
+import { Check, Home, Users, Package, Award, MapPin, Target, Compass } from "lucide-react"
+import ScrollAnimation, { fadeInDown, fadeInUp, fadeInLeft, zoomIn } from "@/components/animations/scroll-animation"
 import StaggerContainer from "@/components/animations/stagger-container"
 import { motion } from "framer-motion"
 
@@ -35,123 +29,133 @@ export default function AboutUs() {
       {/* About Section with Animation */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <ScrollAnimation variant={fadeInLeft} className="order-2 lg:order-1">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12">
+            {/* Photos Column - 5 columns on large screens */}
+            <ScrollAnimation variant={fadeInLeft} className="lg:col-span-5">
               <div className="grid grid-cols-2 gap-4">
-                <div className="relative h-[200px]">
-                  <Image
-                    src="/placeholder.svg?height=200&width=200"
-                    alt="About Image 1"
-                    fill
-                    className="object-cover rounded-lg"
-                  />
+                <div className="space-y-4">
+                  <div className="relative h-48 rounded-lg overflow-hidden shadow-md">
+                    <Image
+                      src="/placeholder.svg?height=300&width=300&text=Construction"
+                      alt="Construction"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="relative h-48 rounded-lg overflow-hidden shadow-md">
+                    <Image
+                      src="/placeholder.svg?height=300&width=300&text=Materials"
+                      alt="Materials"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
-                <div className="relative h-[200px] mt-8">
-                  <Image
-                    src="/placeholder.svg?height=200&width=200"
-                    alt="About Image 2"
-                    fill
-                    className="object-cover rounded-lg"
-                  />
-                </div>
-                <div className="relative h-[200px] col-span-2">
-                  <Image
-                    src="/placeholder.svg?height=200&width=400"
-                    alt="About Image 3"
-                    fill
-                    className="object-cover rounded-lg"
-                  />
+                <div className="mt-8">
+                  <div className="relative h-80 rounded-lg overflow-hidden shadow-md">
+                    <Image
+                      src="/placeholder.svg?height=500&width=300&text=Solutions"
+                      alt="Solutions"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
               </div>
-              <ScrollAnimation variant={zoomIn} delay={0.3}>
-                <div className="bg-primary text-white p-6 rounded-lg mt-4">
-                  <div className="text-3xl font-bold">25</div>
-                  <div>Years Of Experience</div>
+            </ScrollAnimation>
+
+            {/* Content Column - 7 columns on large screens */}
+            <div className="lg:col-span-7">
+              <ScrollAnimation variant={fadeInUp}>
+                <h3 className="text-3xl md:text-4xl font-bold mb-6">Construction Solutions Experts</h3>
+              </ScrollAnimation>
+
+              <ScrollAnimation variant={fadeInUp} delay={0.1}>
+                <p className="text-gray-700 mb-6">
+                  The BOND CLICK name itself derived from construction & Cement which give us a driving strength to
+                  serve the construction industry at large since 2015. We, BOND CLICK are leader in developing and
+                  providing custom made constructive solution for almost all type of construction projects with
+                  unmatched high performance construction products with industry best technical support combined with
+                  customer services.
+                </p>
+                <p className="text-gray-700 mb-6">
+                  We are specialized in Tile Adhesive, ready mix mortar, Epoxy Grouts, Waterproofing Chemicals,
+                  Engineering Grouts and speciality chemicals for repairs and rehabilitation of Construction.
+                </p>
+                <p className="text-gray-700 mb-6">
+                  BOND CLICK has strong standing in the market with backbone of highly talented skilled chemists and
+                  engineers. We have conviction to be a leader in this field by building reputation for innovation,
+                  dedicated human resource to serve our clients, unmatched quality experience to the users of our
+                  products, knowledge enhancing technical support to architects, engineers, contractors and ultimate
+                  decision makers like builders and investors.
+                </p>
+              </ScrollAnimation>
+
+              <ScrollAnimation variant={fadeInUp} delay={0.2}>
+                <div className="mb-8">
+                  <h4 className="font-bold text-xl mb-4">Our Product Categories</h4>
+                  <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <motion.div variants={fadeInUp}>
+                      <ul className="space-y-3">
+                        <li className="flex items-center">
+                          <Check size={18} className="text-primary mr-3" />
+                          <span>TILE & STONE Adhesive</span>
+                        </li>
+                        <li className="flex items-center">
+                          <Check size={18} className="text-primary mr-3" />
+                          <span>Epoxy Grouts</span>
+                        </li>
+                        <li className="flex items-center">
+                          <Check size={18} className="text-primary mr-3" />
+                          <span>Deco. White Cement</span>
+                        </li>
+                        <li className="flex items-center">
+                          <Check size={18} className="text-primary mr-3" />
+                          <span>Engineering Grouts</span>
+                        </li>
+                      </ul>
+                    </motion.div>
+
+                    <motion.div variants={fadeInUp}>
+                      <ul className="space-y-3">
+                        <li className="flex items-center">
+                          <Check size={18} className="text-primary mr-3" />
+                          <span>Waterproofing Chemicals</span>
+                        </li>
+                        <li className="flex items-center">
+                          <Check size={18} className="text-primary mr-3" />
+                          <span>Floor Hardner</span>
+                        </li>
+                        <li className="flex items-center">
+                          <Check size={18} className="text-primary mr-3" />
+                          <span>Ready Mis Plaster & Mortars</span>
+                        </li>
+                      </ul>
+                    </motion.div>
+                  </StaggerContainer>
                 </div>
               </ScrollAnimation>
-            </ScrollAnimation>
 
-            <ScrollAnimation variant={fadeInRight} className="order-1 lg:order-2">
-              <h2 className="text-2xl md:text-3xl font-bold mb-6">WHY CHOOSE US</h2>
-              <h3 className="text-3xl md:text-4xl font-bold mb-6">Where Wanderlust Meets Dream Destinations</h3>
-              <p className="text-gray-600 mb-6">
-                The BOND CLICK name itself derived from construction & Cement which give us a driving strength to serve
-                the construction industry at large since 2015. We, BOND CLICK are leader in developing and providing
-                custom made constructive solution for almost all type of construction projects.
-              </p>
-              <p className="text-gray-600 mb-6">
-                Our products are available through a well organised chain of Super Distributors, Area Distributors &
-                Authorised Dealer for Trade Market. We also cater to the construction projects by public sector as well
-                as private sector through our network.
-              </p>
-
-              <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <motion.div className="flex items-start" variants={fadeInUp}>
-                  <div className="bg-primary rounded-full p-3 mr-4">
-                    <Image
-                      src="/placeholder.svg?height=30&width=30"
-                      alt="Passport Plus"
-                      width={30}
-                      height={30}
-                      className="object-contain"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="font-bold mb-2">Passport Plus</h4>
-                    <ul className="space-y-2">
-                      <li className="flex items-center">
-                        <Check size={16} className="text-primary mr-2" />
-                        <span className="text-sm">Expedited Visa Processing</span>
-                      </li>
-                      <li className="flex items-center">
-                        <Check size={16} className="text-primary mr-2" />
-                        <span className="text-sm">Worldwide Visa Assistance</span>
-                      </li>
-                    </ul>
-                  </div>
-                </motion.div>
-
-                <motion.div className="flex items-start" variants={fadeInUp}>
-                  <div className="bg-primary rounded-full p-3 mr-4">
-                    <Image
-                      src="/placeholder.svg?height=30&width=30"
-                      alt="Global Entry"
-                      width={30}
-                      height={30}
-                      className="object-contain"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="font-bold mb-2">Global Entry</h4>
-                    <ul className="space-y-2">
-                      <li className="flex items-center">
-                        <Check size={16} className="text-primary mr-2" />
-                        <span className="text-sm">Seamless TSA PreCheck</span>
-                      </li>
-                      <li className="flex items-center">
-                        <Check size={16} className="text-primary mr-2" />
-                        <span className="text-sm">Priority Pass Assistance</span>
-                      </li>
-                    </ul>
-                  </div>
-                </motion.div>
-              </StaggerContainer>
-
-              <button className="bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-md font-medium">
-                Read More
-              </button>
-            </ScrollAnimation>
+              <ScrollAnimation variant={fadeInUp} delay={0.3} className="text-center">
+                <Link
+                  href="/products"
+                  className="bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-md font-medium inline-block"
+                >
+                  View Our Products
+                </Link>
+              </ScrollAnimation>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Process Section with Animation */}
+      {/* Manufacturing Facilities Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <ScrollAnimation variant={fadeInUp}>
             <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold mb-2">PROCESS OVERVIEW</h2>
-              <h3 className="text-3xl md:text-4xl font-bold mb-4">Why us?</h3>
+              <h2 className="text-2xl md:text-3xl font-bold mb-2">OUR FACILITIES</h2>
+              <h3 className="text-3xl md:text-4xl font-bold mb-4">Multi-Location Manufacturing</h3>
             </div>
           </ScrollAnimation>
 
@@ -159,21 +163,21 @@ export default function AboutUs() {
             {[
               {
                 icon: "01",
-                title: "Voyager Agency",
+                title: "Himatnagar, Gujarat",
                 description:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eros justo, posuere lobortis viverra laoreet augue mattis.",
+                  "Our primary manufacturing facility is located in Himatnagar, Gujarat State, equipped with state-of-the-art technology for producing high-quality construction materials.",
               },
               {
                 icon: "02",
-                title: "International Access Visas",
+                title: "Vapi, Gujarat",
                 description:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eros justo, posuere lobortis viverra laoreet augue mattis.",
+                  "Our Vapi facility (currently under implementation) will expand our production capacity to meet growing demand across western India.",
               },
               {
                 icon: "03",
-                title: "Gateway to Global Citizenship",
+                title: "Bhiwandi, Maharashtra",
                 description:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eros justo, posuere lobortis viverra laoreet augue mattis.",
+                  "Our upcoming facility in Bhiwandi, Maharashtra State (under implementation) will strengthen our presence in the western region of India.",
               },
             ].map((item, index) => (
               <motion.div key={index} className="bg-white p-6 rounded-lg shadow-sm" variants={fadeInUp}>
@@ -183,56 +187,92 @@ export default function AboutUs() {
               </motion.div>
             ))}
           </StaggerContainer>
+
+          <ScrollAnimation variant={fadeInUp} delay={0.3} className="mt-8 text-center">
+            <p className="text-gray-700 italic">
+              We are also exploring to export our products to South Africa, Dubai and Nepal.
+            </p>
+          </ScrollAnimation>
         </div>
       </section>
 
-      {/* About Info Section */}
-      <section className="py-16">
+      {/* Vision & Mission Section with Single Photo */}
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="relative h-[300px]">
-                <Image
-                  src="/placeholder.svg?height=300&width=400"
-                  alt="About Info 1"
-                  fill
-                  className="object-cover rounded-lg"
-                />
-              </div>
-              <div className="relative h-[300px]">
-                <Image
-                  src="/placeholder.svg?height=300&width=400"
-                  alt="About Info 2"
-                  fill
-                  className="object-cover rounded-lg"
-                />
-              </div>
+          <ScrollAnimation variant={fadeInUp}>
+            <div className="text-center mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold mb-2">OUR VISION & MISSION</h2>
+              <h3 className="text-3xl md:text-4xl font-bold mb-4">Building a Sustainable Future</h3>
             </div>
-            <div className="bg-gray-100 p-6 rounded-lg">
-              <div className="flex justify-center mb-4">
-                <div className="bg-primary rounded-full p-3">
-                  <Image
-                    src="/placeholder.svg?height=30&width=30"
-                    alt="About Icon"
-                    width={30}
-                    height={30}
-                    className="object-contain"
-                  />
+          </ScrollAnimation>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Image Column - Spans 5 columns on large screens */}
+            <ScrollAnimation variant={fadeInLeft} className="lg:col-span-5">
+              <div className="relative w-full aspect-square rounded-lg overflow-hidden shadow-lg">
+                <Image src="/about-us-4.svg" alt="Construction Workers" fill className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <div className="text-white font-bold text-xl">BOND CLICK</div>
+                  <div className="text-white/80 text-sm">WE BUILD YOUR DREAM</div>
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-center mb-4">About us</h3>
-              <p className="text-gray-600 mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eros justo, posuere lobortis viverra
-                laoreet augue mattis. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </p>
-              <div className="text-center">
+            </ScrollAnimation>
+
+            {/* Content Column - Spans 7 columns on large screens */}
+            <div className="lg:col-span-7">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Vision Card */}
+                <ScrollAnimation
+                  variant={fadeInUp}
+                  delay={0.1}
+                  className="bg-gray-50 p-6 rounded-lg shadow-sm border-t-4 border-primary"
+                >
+                  <div className="flex items-center mb-4">
+                    <div className="bg-primary/10 p-3 rounded-full mr-4">
+                      <Target className="h-6 w-6 text-primary" />
+                    </div>
+                    <h4 className="text-xl font-bold">Vision</h4>
+                  </div>
+                  <p className="text-gray-700">
+                    To develop, manufacture and supply innovative construction material and chemicals that enhance
+                    productivity, workability and durability which will contribute to sustainable development.
+                  </p>
+                </ScrollAnimation>
+
+                {/* Mission Card */}
+                <ScrollAnimation
+                  variant={fadeInUp}
+                  delay={0.2}
+                  className="bg-gray-50 p-6 rounded-lg shadow-sm border-t-4 border-secondary"
+                >
+                  <div className="flex items-center mb-4">
+                    <div className="bg-secondary/10 p-3 rounded-full mr-4">
+                      <Compass className="h-6 w-6 text-secondary" />
+                    </div>
+                    <h4 className="text-xl font-bold">Mission</h4>
+                  </div>
+                  <p className="text-gray-700">
+                    We would have a pan India multi-locational manufacturing and distribution network by 2027. Become
+                    the tile adhesive master and leader.
+                  </p>
+                </ScrollAnimation>
+              </div>
+
+              <ScrollAnimation variant={fadeInUp} delay={0.3} className="mt-8">
+                <p className="text-gray-700 mb-6">
+                  Our continuous commitment to words customer support by working in symphony with architects, structural
+                  and civil engineers, contractors, applicator to understand their needs and requirements for cutting
+                  edge technical solution to their unique and diverse requirements of every stage and type of
+                  construction activity.
+                </p>
                 <Link
                   href="/contact-us"
-                  className="inline-block border border-primary text-primary hover:bg-primary hover:text-white px-4 py-2 rounded-md transition-all"
+                  className="inline-block bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-md font-medium transition-all"
                 >
-                  Contact us
+                  Work With Us
                 </Link>
-              </div>
+              </ScrollAnimation>
             </div>
           </div>
         </div>
@@ -295,22 +335,38 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* Partners Section */}
+      {/* Distribution Network Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-            {[1, 2, 3, 4, 5].map((item) => (
-              <div key={item} className="grayscale hover:grayscale-0 transition-all">
-                <Image
-                  src="/placeholder.svg?height=50&width=150"
-                  alt={`Partner ${item}`}
-                  width={150}
-                  height={50}
-                  className="object-contain"
-                />
-              </div>
-            ))}
-          </div>
+          <ScrollAnimation variant={fadeInUp}>
+            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Our Distribution Network</h2>
+          </ScrollAnimation>
+
+          <ScrollAnimation variant={fadeInUp} delay={0.1}>
+            <p className="text-gray-700 text-center max-w-4xl mx-auto mb-12">
+              Our products are available through a well organised chain of Super Distributors, Area Distributors &
+              Authorised Dealer for Trade Market. We also cater to the construction projects by public sector as well as
+              private sector through our network.
+            </p>
+          </ScrollAnimation>
+
+          <ScrollAnimation variant={fadeInUp} delay={0.2}>
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+              {[
+                "Super Distributors",
+                "Area Distributors",
+                "Authorised Dealers",
+                "Project Partners",
+                "Retail Network",
+              ].map((item, index) => (
+                <div key={index} className="text-center">
+                  <div className="bg-gray-100 hover:bg-primary hover:text-white p-4 rounded-lg transition-all duration-300 w-[150px] h-[100px] flex items-center justify-center">
+                    <span className="font-medium">{item}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </ScrollAnimation>
         </div>
       </section>
     </div>

@@ -14,6 +14,28 @@
   --tertiary-dark: #b16b88;
   --text-primary: #333333;
   --text-secondary: #666666;
+
+  /* Add smooth scrolling behavior */
+  scroll-behavior: smooth;
+}
+
+/* Add a class for when JavaScript is used to control scroll behavior */
+.js-scroll {
+  scroll-behavior: auto;
+}
+
+/* Optimize animations for devices that prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 body {
