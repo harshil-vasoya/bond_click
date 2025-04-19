@@ -1,0 +1,17 @@
+{
+  "node": {
+    "40d52ca33562a5463cf933bb6e28c8ca702b64b15f": {
+      "workers": {
+        "app/contact-us/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Futsavbusa%2FDesktop%2Fbond_click%2Flib%2Factions.ts%22%2C%5B%5B%2240d52ca33562a5463cf933bb6e28c8ca702b64b15f%22%2C%22sendContactEmail%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/contact-us/page": "action-browser"
+      }
+    }
+  },
+  "edge": {},
+  "encryptionKey": "0rHkoC+ut+cymdbH0GeWOp0Bh03JZwtAijL1rUVLkKM="
+}

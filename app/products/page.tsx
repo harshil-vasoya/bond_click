@@ -1,127 +1,143 @@
-"use client"
-import Link from "next/link"
-import { ArrowRight, Home, Star } from "lucide-react"
-import ScrollAnimation, { fadeInUp } from "@/components/animations/scroll-animation"
-import StaggerContainer from "@/components/animations/stagger-container"
-import { motion } from "framer-motion"
-import TiltCard from "@/components/animations/tilt-card"
-import AnimatedText from "@/components/animations/animated-text"
+"use client";
 
-const products = [
-  {
-    id: 1,
-    name: "Three Star",
-    type: "Stone Adhesive",
-    description: "Premium quality adhesive for stone and heavy tiles. Maximum strength and durability.",
-    weight: "20kg",
-    color: "primary",
-    stars: 3,
-    features: ["Water Resistant", "Heavy Duty", "Maximum Strength"],
-    certifications: ["ISO", "CE", "Quality"],
-  },
-  {
-    id: 2,
-    name: "Two Star",
-    type: "Tile Adhesive",
-    description: "Professional grade tile adhesive for all types of tiles. Enhanced bonding strength.",
-    weight: "20kg",
-    color: "secondary",
-    stars: 2,
-    features: ["Water Resistant", "Strong Bond", "Versatile"],
-    certifications: ["ISO", "CE", "Quality"],
-  },
-  {
-    id: 3,
-    name: "One Star",
-    type: "Floor Adhesive",
-    description: "Standard grade adhesive for basic tiling needs. Reliable and easy to use.",
-    weight: "20kg",
-    color: "tertiary",
-    stars: 1,
-    features: ["Water Resistant", "Easy Apply", "Durable"],
-    certifications: ["ISO", "CE", "Quality"],
-  },
-]
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Star } from "lucide-react";
+import ScrollAnimation, { fadeInUp } from "@/components/animations/scroll-animation";
 
 export default function Products() {
+  const products = [
+    {
+      id: 1,
+      name: "Stone Adhesive",
+      category: "Premium",
+      rating: 5,
+      image: "/photos_1.jpg",
+      description: "Premium quality adhesive for professional use. Water resistant and easy to apply.",
+      features: ["Water Resistant", "High Strength", "Easy Application", "Extended Open Time"],
+      price: "₹350.00",
+      badge: "Best Seller",
+    },
+    {
+      id: 2,
+      name: "Tile Adhesive",
+      category: "Professional",
+      rating: 4,
+      image: "/photos_2.jpg",
+      description: "Professional grade tile adhesive for all types of tiles. Enhanced bonding strength.",
+      features: ["Anti-Slip", "Crack Resistant", "Interior & Exterior", "Quick Setting"],
+      price: "₹300.00",
+      badge: "New",
+    },
+    {
+      id: 3,
+      name: "Floor Adhesive",
+      category: "Standard",
+      rating: 4,
+      image: "/photos_3.jpeg",
+      description: "Standard grade adhesive for basic tiling needs. Reliable and easy to use.",
+      features: ["Durable Bond", "Cost Effective", "Easy Mixing", "Good Coverage"],
+      price: "₹250.00",
+      badge: "Popular",
+    },
+  ];
+
   return (
-    <div>
-      <div className="page-header">
+    <div className="px-4 md:!px-0">
+      {/* Page Header */}
+      <div className="container mx-auto p-20 rounded-lg bg-primary">
         <div className="container mx-auto px-4">
-          <AnimatedText text="Our Products" className="text-3xl md:text-4xl font-bold mb-4 text-white" />
-          <div className="breadcrumb">
-            <Link href="/">
-              <Home size={16} />
-            </Link>
-            <span>&gt;</span>
-            <span>Products</span>
-          </div>
+          <ScrollAnimation variant={fadeInUp}>
+            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-white">Our Products</h1>
+            <div className="breadcrumb">
+              <Link href="/" className="text-white">
+                Home
+              </Link>
+              <span>&gt;</span>
+              <span className="text-white">Products</span>
+            </div>
+          </ScrollAnimation>
         </div>
       </div>
 
+      {/* Products Grid */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
-          <ScrollAnimation variant={fadeInUp} className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center">Professional Grade Adhesives</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto text-center">
-              Discover our range of high-quality adhesives designed for professional use. From stone to tile
-              applications, we have the perfect solution for your needs.
-            </p>
-          </ScrollAnimation>
+        <div className="container mx-auto !px-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {products.map((product, index) => (
+              <ScrollAnimation key={index} variant={fadeInUp} delay={index * 0.1}>
+                <div className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+                  {/* Badge */}
+                  {product.badge && (
+                    <div className="absolute top-4 right-4 z-10 bg-primary text-white text-sm px-3 py-1 rounded-full">
+                      {product.badge}
+                    </div>
+                  )}
 
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map((product) => (
-              <motion.div key={product.id} variants={fadeInUp}>
-                <TiltCard>
-                  <div
-                    className={`product-card ${product.stars === 3 ? "three-star" : product.stars === 2 ? "two-star" : "one-star"}`}
-                  >
-                    <div className="stripe" />
-                    <div className="content">
-                      <div className="flex items-center gap-1 mb-2">
-                        {Array.from({ length: product.stars }).map((_, i) => (
-                          <Star key={i} size={16} className={`fill-${product.color} text-${product.color}`} />
+                  {/* Image Container */}
+                  <div className="relative h-[300px] overflow-hidden">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      className="object-cover transform group-hover:scale-110 transition-transform duration-500"
+                    />
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-6">
+                    {/* Category and Rating */}
+                    <div className="flex justify-between items-center mb-3">
+                      <span className="text-sm text-primary font-medium">{product.category}</span>
+                      <div className="flex items-center gap-1">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            size={16}
+                            className={`${i < product.rating ? "text-yellow-400 fill-yellow-400" : "text-gray-300"}`}
+                          />
                         ))}
                       </div>
+                    </div>
 
-                      <h3 className="text-2xl font-bold mb-1">{product.name}</h3>
-                      <p className="text-lg text-gray-800 mb-4">{product.type}</p>
+                    {/* Title and Description */}
+                    <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                      {product.name}
+                    </h3>
+                    <p className="text-gray-600 text-sm mb-4">{product.description}</p>
 
-                      <div className="space-y-4">
-                        <p className="text-gray-600">{product.description}</p>
-
-                        <div className="flex flex-wrap gap-2">
-                          {product.features.map((feature, index) => (
-                            <span
-                              key={index}
-                              className={`text-xs px-2 py-1 rounded-full bg-${product.color}/10 text-${product.color}`}
-                            >
-                              {feature}
-                            </span>
-                          ))}
+                    {/* Features */}
+                    <div className="space-y-2 mb-6">
+                      {product.features.map((feature, i) => (
+                        <div key={i} className="flex items-center text-sm text-gray-600">
+                          <div className="w-1.5 h-1.5 rounded-full bg-primary mr-2" />
+                          {feature}
                         </div>
+                      ))}
+                    </div>
 
-                        <div className="flex items-center justify-between">
-                          <div className="text-gray-600">
-                            Net Weight: <span className="font-semibold">{product.weight}</span>
-                          </div>
-                          <Link
-                            href={`/products/${product.id}`}
-                            className={`inline-flex items-center text-${product.color} hover:underline`}
-                          >
-                            View Details <ArrowRight size={16} className="ml-1" />
-                          </Link>
-                        </div>
-                      </div>
+                    {/* Price and Action */}
+                    <div className="flex items-center justify-between">
+                      <span className="text-2xl font-bold text-gray-900">{product.price}</span>
+                      <Link
+                        href={`/products/${product.id}`}
+                        className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all">
+                        View Details
+                        <ArrowRight size={16} />
+                      </Link>
                     </div>
                   </div>
-                </TiltCard>
-              </motion.div>
+
+                  {/* Bottom Border Animation */}
+                  <div className="absolute bottom-0 left-0 w-0 h-1 bg-primary group-hover:w-full transition-all duration-300" />
+                </div>
+              </ScrollAnimation>
             ))}
-          </StaggerContainer>
+          </div>
         </div>
       </section>
     </div>
-  )
+  );
 }
-

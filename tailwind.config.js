@@ -15,9 +15,9 @@ module.exports = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#4CB5A5", // Teal - Three Star
-          light: "#5FC2B3",
-          dark: "#3A9A8A",
+          DEFAULT: "#bb9f38", // Teal - Three Star
+          light: "#d6c588",
+          dark: "#705f22",
         },
         secondary: {
           DEFAULT: "#9B7B9B", // Purple - Two Star

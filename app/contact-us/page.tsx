@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import Link from "next/link"
-import { Home, Phone } from "lucide-react"
-import { sendContactEmail } from "@/lib/actions"
-import ScrollAnimation, { fadeInUp, fadeInLeft, fadeInRight } from "@/components/animations/scroll-animation"
-import AnimatedText from "@/components/animations/animated-text"
+import { useState } from "react";
+import Link from "next/link";
+import { Home, Phone } from "lucide-react";
+import { sendContactEmail } from "@/lib/actions";
+import ScrollAnimation, { fadeInUp, fadeInLeft, fadeInRight } from "@/components/animations/scroll-animation";
+import AnimatedText from "@/components/animations/animated-text";
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({
@@ -15,43 +15,45 @@ export default function ContactUs() {
     email: "",
     subject: "",
     message: "",
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitMessage, setSubmitMessage] = useState("")
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     try {
-      await sendContactEmail(formData)
-      setSubmitMessage("Your message has been sent successfully!")
-      setFormData({ name: "", email: "", subject: "", message: "" })
+      await sendContactEmail(formData);
+      setSubmitMessage("Your message has been sent successfully!");
+      setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
-      setSubmitMessage("Failed to send message. Please try again.")
+      setSubmitMessage("Failed to send message. Please try again.");
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   return (
-    <div>
+    <div className="px-4 md:!px-0">
       {/* Page Header */}
-      <div className="page-header">
+      <div className="container mx-auto p-20 rounded-lg bg-primary">
         <div className="container mx-auto px-4">
-          <AnimatedText text="Contact Us" className="text-3xl md:text-4xl font-bold mb-4 text-white" />
-          <div className="breadcrumb">
-            <Link href="/">
-              <Home size={16} />
-            </Link>
-            <span>&gt;</span>
-            <span>Contact Us</span>
-          </div>
+          <ScrollAnimation variant={fadeInUp}>
+            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-white">Our Blog</h1>
+            <div className="breadcrumb">
+              <Link href="/" className="text-white">
+                Home
+              </Link>
+              <span>&gt;</span>
+              <span className="text-white">Blog</span>
+            </div>
+          </ScrollAnimation>
         </div>
       </div>
 
@@ -150,14 +152,12 @@ export default function ContactUs() {
                       value={formData.message}
                       onChange={handleChange}
                       className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                      required
-                    ></textarea>
+                      required></textarea>
                   </div>
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-md font-medium transition-all disabled:opacity-70"
-                  >
+                    className="bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-md font-medium transition-all disabled:opacity-70">
                     {isSubmitting ? "Sending..." : "Send Message"}
                   </button>
                   {submitMessage && (
@@ -202,6 +202,5 @@ export default function ContactUs() {
         </div>
       </section>
     </div>
-  )
+  );
 }
-
