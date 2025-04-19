@@ -121,8 +121,100 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Get Best Offers Section */}
+      <section className="py-16 md:py-24 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-4 relative">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-4 items-center">
+            {/* Left Content Side */}
+            <div className="h-full bg-gray-100 rounded-2xl"></div>
+            <div className="h-full lg:col-span-2 flex flex-col justify-between gap-4">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 md:gap-4 items-center">
+                <div className="flex flex-col lg:col-span-2 items-center justify-center text-center">
+                  {/* Circular Icon */}
+                  <div className="w-24 h-24 bg-[#B5A054] rounded-full flex items-center justify-center mb-8">
+                    <svg
+                      className="w-12 h-12 text-white"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M2 12H22"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+
+                  {/* Heading */}
+                  <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">Get our best offers quickly</h2>
+
+                  {/* Description */}
+                  <p className="text-gray-600 mb-8 max-w-xl">
+                    Lorem Ipsum is simply dummy text the printing and typese Lorem Ipsum has been the industry's
+                    standard dummy
+                  </p>
+
+                  {/* Contact Button */}
+                  <button className="inline-flex items-center gap-2 border-2 border-black text-black px-8 py-3 rounded-full hover:bg-black hover:text-white transition-all duration-300">
+                    Contact us
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M5 12H19M19 12L12 5M19 12L12 19"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div className="h-full bg-gray-100 rounded-2xl"></div>
+              </div>
+
+              {/* Right Stats Side */}
+              <div className="bg-[#B5A054] rounded-2xl p-8 md:p-12">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                  <div className="text-center">
+                    <div className="text-4xl md:text-5xl font-bold text-white mb-2">10k+</div>
+                    <div className="text-white">Complete project</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-4xl md:text-5xl font-bold text-white mb-2">20+</div>
+                    <div className="text-white">Team member</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-4xl md:text-5xl font-bold text-white mb-2">5k+</div>
+                    <div className="text-white">Winning award</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-4xl md:text-5xl font-bold text-white mb-2">100+</div>
+                    <div className="text-white">Complete project</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* About Section */}
-      <section className="py-12 md:py-16">
+      <section className="pb-12 md:pb-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
             <ScrollAnimation variant={fadeInLeft} threshold={0.1}>
@@ -170,7 +262,7 @@ export default function Home() {
       </section>
 
       {/* Our Popular Products Section */}
-      <section className="pt-12 md:pt-16 bg-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto py-6 px-4">
           <div className="flex items-center justify-between mb-8">
             <div>
